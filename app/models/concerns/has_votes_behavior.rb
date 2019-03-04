@@ -1,4 +1,4 @@
-module HasVoteBehavior
+module HasVotesBehavior
   extend ActiveSupport::Concern
 
   included do

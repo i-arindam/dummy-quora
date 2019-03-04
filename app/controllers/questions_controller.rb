@@ -1,6 +1,17 @@
 class QuestionsController < ApplicationController
 
-  before_action :find_question, only: [:upvote, :comment, :destroy]
+  before_action :find_question, only: [:update]
+
+  def edit
+  end
+
+  def update
+    if @question.update(question_params)
+      redirect_to @question
+    else
+      render json: { errors: 'cannot update question' }
+    end
+  end
 
   def create
     @question = current_user.questions.create!(question_params)
@@ -18,26 +29,10 @@ class QuestionsController < ApplicationController
     @question.destroy!
   end
 
-  def upvote
-    @question.question_votes.create!(user: current_user, vote_type: 'up')
-  end
-
-  def comment
-    @comment = @question.comments.create!(:comment_params)
-  end
-
-  def downvote
-    @question.question_votes.create!(user: current_user, vote_type: 'down')
-  end
-
   private
 
   def question_params
     params.require(:question).permit(:body, :description)
-  end
-
-  def comment_params
-    params.require(:comment).permit(:body)
   end
 
   def find_question

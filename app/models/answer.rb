@@ -4,5 +4,6 @@ class Answer < ApplicationRecord
 
   has_many :comments, as: :commentable
 
-  include HasVoteBehavior
+  include HasVotesBehavior
+  include HasCommentsBehavior
 end
