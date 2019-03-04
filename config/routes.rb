@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   concern :followable do
     member do
       post :follow
+      post :unfollow
       get :followers
     end
   end

@@ -37,4 +37,8 @@ class CommentsController < ApplicationController
   def comment_finder
     Comment.find(params[:id])
   end
+
+  def comment_params
+    params.require(:comment).permit(:body)
+  end
 end

@@ -3,6 +3,10 @@ class AnswersController < ApplicationController
   include HasVotesActions
   include HasFollowActions
 
+  def create
+    @answer = Question.find(params[:question_id]).answers.create!(answer_params)
+  end
+
   def update
     if @answer.update(answer_params)
       redirect_to @answer
@@ -27,5 +31,9 @@ class AnswersController < ApplicationController
 
   def answer_finder
     Answer.find(params[:id])
+  end
+
+  def answer_params
+    params.require(:answer).permit(:body)
   end
 end

@@ -2,23 +2,19 @@ module HasFollowActions
   extend ActiveSupport::Concern
 
   included do
-    before_action :initialize_object_for_voting, only: [:upvote, :downvote, :upvoters, :downvoters]
+    before_action :initialize_object_for_following, only: [:follow, :unfollow, :followers]
 
     module ClassMethods
-      def upvote
-        @object.votes.create!(vote_type: Vote::VOTE_UP, user: current_user)
+      def follow
+        @object.follows.create!(user: current_user)
       end
 
-      def downvote
-        @object.votes.create!(vote_type: Vote::VOTE_DOWN, user: current_user)
+      def unfollow
+        @object.follows.where(user: current_user).destroy!
       end
 
-      def upvoters
-        @object.upvoters
-      end
-
-      def downvoters
-        @object.downvoters
+      def followers
+        @object.follows.map(&:user)
       end
     end
   end
