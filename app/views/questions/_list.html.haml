@@ -1,0 +1,18 @@
+- @questions.each do |question|
+  .question-display
+    .topics-section
+      %ul.topics-list
+        - question.topics.each do |topic|
+          %li.topic-name= topic.name
+    .question-section
+      .question-body= question.body
+    .author-section
+      .author-name= question.user.name
+      .question-time
+        %span.answered Answered
+        %span.time= question.created_at
+    .votes-section
+      .upvotes-span
+        2 upvotes
+    .comments-section
+      Add coments
