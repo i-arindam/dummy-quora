@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
-
   before_action :find_question, only: [:update]
+  include HasVotesActions
 
   def edit
   end
@@ -35,8 +35,16 @@ class QuestionsController < ApplicationController
     params.require(:question).permit(:body, :description)
   end
 
+  def initialize_object_for_voting
+    @object = question_finder
+  end
+
   def find_question
-    @question = Question.find(params[:id])
+    @question = question_finder
+  end
+
+  def question_finder
+    Question.find(params[:id])
   end
 
   def assign_topics

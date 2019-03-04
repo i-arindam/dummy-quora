@@ -17,13 +17,11 @@ Rails.application.routes.draw do
   end
 
   concern :voteable do
-    resources :votes do
-      member do
-        post :upvote
-        post :downvote
-        get :upvoters
-        get :downvoters
-      end
+    member do
+      post :upvote
+      post :downvote
+      get :upvoters
+      get :downvoters
     end
   end
 
