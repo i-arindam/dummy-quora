@@ -6,7 +6,47 @@
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
+
   %body
+    %nav.navbar.navbar-default
+      .container-fluid
+        .navbar-header
+          %button.navbar-toggle.collapsed{"aria-expanded" => "false", "data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.navbar-brand{:href => "#"} Quora Lite
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          %ul.nav.navbar-nav
+            %li.active
+              %a{:href => "#"}
+                Link
+                %span.sr-only (current)
+            %li
+              %a{:href => "#"} Link
+          %form.navbar-form.navbar-left
+            .form-group
+              %input.form-control{:placeholder => "Search", :type => "text"}/
+            %button.btn.btn-default{:type => "submit"} Submit
+          %ul.nav.navbar-nav.navbar-right
+            %li
+              %a{:href => "#"} Link
+            %li.dropdown
+              %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+                Arindam
+                %span.caret
+              %ul.dropdown-menu
+                %li
+                  %a{:href => "#"} Profile
+                %li
+                  %a{:href => "#"} Questions
+                %li
+                  %a{:href => "#"} Something else here
+                %li.divider{:role => "separator"}
+                %li
+                  = link_to 'Sign Out', destroy_user_session_path, data: { method: :delete }
+
     .flash-messages
       %p.notice= notice
       %p.alert= alert

@@ -1,3 +1,18 @@
-// Place all the styles related to the Home controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.center-panel {
+  .new-question-form {
+    display: none;
+  }
+  .new-question-body {
+    display: block;
+    width: 100%;
+    min-height: 10rem;
+    margin: 20px 0;
+    border-radius: 5px;
+    border-color: #d0cfcf;
+    resize: none;
+    outline: none;
+    padding: 10px 15px;
+    font-size: 1.5em;
+  }
+}

@@ -1,1 +1,15 @@
-HELLO
+.container
+  .left-panel.col-md-2
+
+  .container.center-panel.col-md-8
+    .user-new-question
+      .facade
+        .user-name= current_user.name
+        %a.toggle-new-question-form{ href: '#'}
+          Add a new question
+      = form_for :question, { url: '/questions', remote: true, method: :post, html: { class: 'new-question-form'} } do |f|
+        = f.text_area :body, class: 'new-question-body'
+        = f.submit 'Post Question'
+        = link_to 'Cancel', '#', class: 'cancel-new-question'
+
+  .right-panel.col-md-2
