@@ -25,7 +25,7 @@ class RepliesController < ApplicationController
   end
 
   def reply_finder
-    Reply.find(params[:id])
+    @reply = Reply.find(params[:id])
   end
 
   def reply_params

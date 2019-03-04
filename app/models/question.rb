@@ -10,12 +10,4 @@ class Question < ApplicationRecord
 
   include HasVotesBehavior
   include HasCommentsBehavior
-
-  def upvotes_count
-    votes.upvotes.count
-  end
-
-  def downvotes_count
-    votes.downvotes.count
-  end
 end

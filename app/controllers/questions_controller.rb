@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_action :find_question, only: [:update]
+  before_action :question_finder, only: [:update]
   include HasVotesActions
   include HasFollowActions
 
@@ -44,12 +44,8 @@ class QuestionsController < ApplicationController
     @object = question_finder
   end
 
-  def find_question
-    @question = question_finder
-  end
-
   def question_finder
-    Question.find(params[:id])
+    @question = Question.find(params[:id])
   end
 
   def assign_topics

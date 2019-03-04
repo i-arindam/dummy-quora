@@ -6,9 +6,10 @@ class User < ApplicationRecord
 
   has_many :questions
   has_many :answers
-  has_many :comments
   has_many :replies
+  has_many :comments, as: :commentable
   has_many :follows, as: :followable
+  has_many :votes, as: :voteable
 
   def name
     [first_name, last_name].join(' ')

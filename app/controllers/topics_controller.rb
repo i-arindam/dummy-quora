@@ -3,7 +3,7 @@ class TopicsController < ApplicationController
   include HasFollowActions
 
   def show
-    @topic = topic_finder
+    topic_finder
   end
 
   private
@@ -13,6 +13,6 @@ class TopicsController < ApplicationController
   end
 
   def topic_finder
-    Topic.find(params[:id])
+    @topic = Topic.find(params[:id])
   end
 end

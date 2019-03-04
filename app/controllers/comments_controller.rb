@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :find_parent, only: :create
-  before_action :find_comment, only: [:update]
+  before_action :comment_finder, only: [:update]
   include HasVotesActions
 
   def create
@@ -22,10 +22,6 @@ class CommentsController < ApplicationController
     @parent ||= Answer.find(params[:answer_id]) if params[:answer_id]
   end
 
-  def find_comment
-    @comment = comment_finder
-  end
-
   def comment_params
     params.require(:comment).permit(:body)
   end
@@ -35,7 +31,7 @@ class CommentsController < ApplicationController
   end
 
   def comment_finder
-    Comment.find(params[:id])
+    @comment = Comment.find(params[:id])
   end
 
   def comment_params

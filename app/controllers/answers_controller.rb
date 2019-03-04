@@ -30,7 +30,7 @@ class AnswersController < ApplicationController
   end
 
   def answer_finder
-    Answer.find(params[:id])
+    @answer = Answer.find(params[:id])
   end
 
   def answer_params
