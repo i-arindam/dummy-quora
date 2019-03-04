@@ -30,6 +30,8 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'devise'
 gem 'haml'
+gem 'bootstrap-sass', '~> 3.4.1'
+gem 'jquery-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
