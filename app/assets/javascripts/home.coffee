@@ -7,3 +7,6 @@ $(document).on 'click', '.toggle-new-question-form', ->
 $(document).on 'click', '.cancel-new-question', ->
   $('form.new-question-form').hide()
   return
+$('.new-question-form').on 'ajax:success', (data, status, xhr) ->
+  $('.questions-list').append data
+  return

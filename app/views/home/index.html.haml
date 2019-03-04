@@ -8,8 +8,12 @@
         %a.toggle-new-question-form{ href: '#'}
           Add a new question
       = form_for :question, { url: '/questions', remote: true, method: :post, html: { class: 'new-question-form'} } do |f|
-        = f.text_area :body, class: 'new-question-body'
+        = f.text_area :body, class: 'new-question-body', placeholder: 'Enter your question'
+        = f.text_area :description, class: 'new-question-description', placeholder: 'Enter a description (optional)'
         = f.submit 'Post Question'
         = link_to 'Cancel', '#', class: 'cancel-new-question'
+
+    .questions-list
+      One Question
 
   .right-panel.col-md-2

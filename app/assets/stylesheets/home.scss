@@ -2,17 +2,18 @@
 .center-panel {
   .new-question-form {
     display: none;
-  }
-  .new-question-body {
-    display: block;
-    width: 100%;
-    min-height: 10rem;
-    margin: 20px 0;
-    border-radius: 5px;
-    border-color: #d0cfcf;
-    resize: none;
-    outline: none;
-    padding: 10px 15px;
-    font-size: 1.5em;
+
+    textarea {
+      display: block;
+      width: 100%;
+      min-height: 10rem;
+      margin: 20px 0;
+      border-radius: 5px;
+      border-color: #d0cfcf;
+      resize: none;
+      outline: none;
+      padding: 10px 15px;
+      font-size: 1.5em;
+    }
   }
 }
