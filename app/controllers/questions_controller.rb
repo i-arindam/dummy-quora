@@ -1,6 +1,7 @@
 class QuestionsController < ApplicationController
   before_action :find_question, only: [:update]
   include HasVotesActions
+  include HasFollowActions
 
   def edit
   end
@@ -36,6 +37,10 @@ class QuestionsController < ApplicationController
   end
 
   def initialize_object_for_voting
+    @object = question_finder
+  end
+
+  def initialize_object_for_following
     @object = question_finder
   end
 

@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :answers
   has_many :comments
   has_many :replies
+  has_many :follows, as: :followable
 
   def name
     [first_name, last_name].join(' ')

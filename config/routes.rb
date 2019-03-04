@@ -31,7 +31,20 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :questions, except: [:index], concerns: [:commentable, :voteable, :shareable]
+  concern :followable do
+    member do
+      post :follow
+      get :followers
+    end
+  end
+
+  resources :questions, except: [:index], concerns: [:commentable, :voteable, :shareable, :followable]
 
   resources :answers, concerns: [:commentable, :voteable, :shareable]
+
+  resource :topics, concerns: [:followable]
+
+  resources :topics, only: [:show], concerns: [:followable]
+
+  post '/users/:id/follow' => 'users#follow'
 end
