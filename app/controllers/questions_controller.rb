@@ -19,11 +19,15 @@ class QuestionsController < ApplicationController
   end
 
   def upvote
-    @question.question_upvotes.create!(user: current_user)
+    @question.question_votes.create!(user: current_user, vote_type: 'up')
   end
 
   def comment
     @comment = @question.comments.create!(:comment_params)
+  end
+
+  def downvote
+    @question.question_votes.create!(user: current_user, vote_type: 'down')
   end
 
   private

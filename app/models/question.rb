@@ -9,9 +9,13 @@ class Question < ApplicationRecord
   has_many :topic_mappings
   has_many :topics, through: :topic_mappings
 
-  has_many :question_upvotes
+  include HasVoteBehavior
 
   def upvotes_count
-    question_upvotes.count
+    votes.upvotes.count
+  end
+
+  def downvotes_count
+    votes.downvotes.count
   end
 end
